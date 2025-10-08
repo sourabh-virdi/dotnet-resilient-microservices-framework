@@ -1,8 +1,8 @@
-# 🤝 Contributing to Resilient Microservices Framework
+# Contributing to Resilient Microservices Framework
 
 Thank you for your interest in contributing! This guide will help you get started with contributing to the Resilient Microservices Framework.
 
-## 📋 Table of Contents
+## Table of Contents
 - [Code of Conduct](#code-of-conduct)
 - [Getting Started](#getting-started)
 - [Development Setup](#development-setup)
@@ -12,11 +12,11 @@ Thank you for your interest in contributing! This guide will help you get starte
 - [Documentation](#documentation)
 - [Community](#community)
 
-## 🌟 Code of Conduct
+## Code of Conduct
 
 This project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to the project maintainers.
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
@@ -25,15 +25,15 @@ This project adheres to a [Code of Conduct](CODE_OF_CONDUCT.md). By participatin
 - Code editor ([Visual Studio](https://visualstudio.microsoft.com/), [VS Code](https://code.visualstudio.com/), or [JetBrains Rider](https://www.jetbrains.com/rider/))
 
 ### Ways to Contribute
-- 🐛 **Bug Reports** - Report issues you encounter
-- 💡 **Feature Requests** - Suggest new features or improvements
-- 📝 **Documentation** - Improve documentation and examples
-- 🧪 **Testing** - Add test coverage or improve existing tests
-- 💻 **Code Contributions** - Fix bugs or implement new features
-- 🎨 **UI/UX** - Improve user experience in sample applications
-- 📦 **Framework Extensions** - Add new resilience patterns or integrations
+* Bug Reports - Report issues you encounter
+* Feature Requests - Suggest new features or improvements
+* Documentation - Improve documentation and examples
+* Testing - Add test coverage or improve existing tests
+* Code Contributions - Fix bugs or implement new features
+* UI/UX - Improve user experience in sample applications
+* Framework Extensions - Add new resilience patterns or integrations
 
-## 💻 Development Setup
+## Development Setup
 
 ### 1. Fork and Clone
 ```bash
@@ -78,7 +78,7 @@ docker-compose up -d rabbitmq jaeger
 - Open solution file
 - Import code style settings (included in `.editorconfig`)
 
-## 🔄 Contributing Process
+## Contributing Process
 
 ### 1. Choose an Issue
 - Look at [open issues](https://github.com/sourabh-virdi/dotnet-resilient-microservices-framework/issues)
@@ -161,14 +161,13 @@ git push origin feature/your-feature-name
 - **Tests**: Ensure all tests pass
 - **Documentation**: Update relevant documentation
 
-## 📏 Coding Standards
+## Coding Standards
 
-### General Guidelines
-- Follow [Microsoft's C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
-- Use meaningful names for variables, methods, and classes
-- Keep methods small and focused (Single Responsibility Principle)
-- Add XML documentation for public APIs
-- Use async/await appropriately for I/O operations
+* Follow [Microsoft's C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
+* Use meaningful names for variables, methods, and classes
+* Keep methods small and focused (Single Responsibility Principle)
+* Add XML documentation for public APIs
+* Use async/await appropriately for I/O operations
 
 ### Code Style
 ```csharp
@@ -213,7 +212,7 @@ public class PaymentServiceImpl : IPaymentService
 - Provide sensible defaults
 - Support environment variable overrides
 
-## 🧪 Testing Guidelines
+## Testing Guidelines
 
 ### Test Structure
 ```bash
@@ -253,12 +252,11 @@ public async Task ProcessPaymentAsync_ValidRequest_ShouldReturnSuccessResponse()
 }
 ```
 
-### Test Requirements
-- ✅ All new code must have tests
-- ✅ Maintain or improve code coverage
-- ✅ Tests must be reliable and deterministic
-- ✅ Use descriptive test names
-- ✅ Follow Arrange-Act-Assert pattern
+* All new code must have tests
+* Maintain or improve code coverage
+* Tests must be reliable and deterministic
+* Use descriptive test names
+* Follow Arrange-Act-Assert pattern
 
 ### Running Tests
 ```bash
@@ -275,7 +273,7 @@ dotnet test tests/PaymentService.Tests/
 dotnet test --filter "Category=Integration"
 ```
 
-## 📚 Documentation
+## Documentation
 
 ### What to Document
 - **Public APIs**: XML documentation for all public methods
@@ -295,7 +293,7 @@ dotnet test --filter "Category=Integration"
 - Keep documentation up-to-date with code changes
 - Consider both beginners and experienced developers
 
-## 🏗️ Architecture Guidelines
+## Architecture Guidelines
 
 ### Adding New Framework Components
 1. **Core Abstractions**: Define interfaces in `ResilientMicroservices.Core`
@@ -312,7 +310,7 @@ dotnet test --filter "Category=Integration"
 - Record metrics for monitoring and observability
 - Support distributed tracing for request correlation
 
-## 🔧 Development Workflow
+## Development Workflow
 
 ### Daily Development
 ```bash
@@ -349,7 +347,7 @@ dotnet format --verify-no-changes
 dotnet build --configuration Release
 ```
 
-## 🎨 UI/UX Guidelines
+## UI/UX Guidelines
 
 ### Sample Applications
 - Keep UI simple and focused on demonstrating framework features
@@ -363,7 +361,7 @@ dotnet build --configuration Release
 - Include interactive examples where possible
 - Optimize for both desktop and mobile viewing
 
-## 🚀 Release Process
+## Release Process
 
 ### Versioning
 We follow [Semantic Versioning](https://semver.org/):
@@ -378,7 +376,7 @@ We follow [Semantic Versioning](https://semver.org/):
 - [ ] Version numbers are bumped
 - [ ] Release notes are prepared
 
-## 💬 Community
+## Community
 
 ### Getting Help
 - **GitHub Discussions**: For questions and community discussions
@@ -397,7 +395,7 @@ We recognize contributors in several ways:
 - **Release notes** mention significant contributions
 - **GitHub badges** for various contribution types
 
-## 📈 Performance Considerations
+## Performance Considerations
 
 ### Benchmarking
 - Use BenchmarkDotNet for performance testing
@@ -410,7 +408,7 @@ We recognize contributors in several ways:
 - Consider async/await overhead
 - Minimize allocations in high-throughput scenarios
 
-## 🔒 Security Guidelines
+## Security Guidelines
 
 ### Security Best Practices
 - Never commit secrets or credentials
@@ -424,7 +422,7 @@ We recognize contributors in several ways:
 - Email security concerns to: [security@example.com]
 - Use GitHub's private vulnerability reporting feature
 
-## 🏆 Recognition
+## Recognition
 
 ### Hall of Fame
 We maintain a list of top contributors and recognize their efforts:
@@ -436,11 +434,11 @@ We maintain a list of top contributors and recognize their efforts:
 
 ---
 
-## 🙏 Thank You
+## Thank You
 
 Your contributions make this project better for everyone. Whether you're fixing a typo, adding a feature, or helping others in discussions, every contribution matters!
 
-**Happy Coding! 🚀**
+**Happy Coding!**
 
 ---
 
