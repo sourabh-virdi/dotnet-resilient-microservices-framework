@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>ResilientMicroservices.Tracing</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>ResilientMicroservices Framework</Authors>
+    <Description>Distributed tracing implementation using OpenTelemetry for microservices</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTelemetry" Version="1.6.0" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.6.0" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.5.1-beta.1" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.5.1-beta.1" />
+    <PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.5.1" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.6.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ResilientMicroservices.Core\ResilientMicroservices.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -8,7 +8,6 @@
 A comprehensive, production-ready .NET framework for building resilient microservices with built-in patterns for circuit breakers, retry policies, distributed tracing, saga orchestration, and comprehensive metrics collection.
 
 ## **Features**
-## Features
 
 ### **Core Resilience Patterns**
 * **Circuit Breakers** - Polly-based fault tolerance
@@ -39,7 +38,6 @@ A comprehensive, production-ready .NET framework for building resilient microser
 * **Configuration** - Flexible JSON/environment config
 
 ## **Architecture Overview**
-## Architecture Overview
 
 ```mermaid
 graph TB
@@ -118,7 +116,6 @@ graph TB
 ```
 
 ## **Quick Start**
-## Quick Start
 ### **Prerequisites**
 - [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
 ### **1. Clone Repository**
