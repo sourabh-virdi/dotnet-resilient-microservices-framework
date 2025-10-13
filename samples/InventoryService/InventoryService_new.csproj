@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ResilientMicroservices.Core\ResilientMicroservices.Core.csproj" />
+    <ProjectReference Include="..\..\src\ResilientMicroservices.Resilience\ResilientMicroservices.Resilience.csproj" />
+    <ProjectReference Include="..\..\src\ResilientMicroservices.Tracing\ResilientMicroservices.Tracing.csproj" />
+    <ProjectReference Include="..\..\src\ResilientMicroservices.Messaging\ResilientMicroservices.Messaging.csproj" />
+    <ProjectReference Include="..\..\src\ResilientMicroservices.Metrics\ResilientMicroservices.Metrics.csproj" />
+  </ItemGroup>
+
+</Project>

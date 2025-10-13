@@ -1,0 +1,53 @@
+### Get all inventory items
+GET http://localhost:5003/api/inventory
+
+### Get specific product inventory
+GET http://localhost:5003/api/inventory/PROD001
+
+### Check inventory availability
+POST http://localhost:5003/api/inventory/check
+Content-Type: application/json
+
+{
+  "productId": "PROD001",
+  "requiredQuantity": 5
+}
+
+### Reserve inventory
+POST http://localhost:5003/api/inventory/reserve
+Content-Type: application/json
+
+{
+  "productId": "PROD001",
+  "quantity": 3,
+  "reservationReason": "Order processing",
+  "orderId": "ORDER123"
+}
+
+### Release inventory reservation
+POST http://localhost:5003/api/inventory/release
+Content-Type: application/json
+
+{
+  "reservationId": 1,
+  "reason": "Order cancelled"
+}
+
+### Update inventory
+PUT http://localhost:5003/api/inventory/update
+Content-Type: application/json
+
+{
+  "productId": "PROD001",
+  "quantityChange": 10,
+  "reason": "Stock replenishment"
+}
+
+### Health check
+GET http://localhost:5003/api/inventory/health
+
+### Overall service health
+GET http://localhost:5003/health
+
+### Metrics endpoint
+GET http://localhost:5003/metrics
