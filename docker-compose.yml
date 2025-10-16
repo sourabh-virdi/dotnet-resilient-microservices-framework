@@ -1,0 +1,144 @@
+version: '3.8'
+
+services:
+  # Infrastructure Services
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    hostname: jaeger
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "14268:14268"  # HTTP collector
+      - "6831:6831/udp"  # UDP agent
+      - "6832:6832/udp"  # UDP agent
+    environment:
+      COLLECTOR_OTLP_ENABLED: true
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:16686"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Microservices
+  order-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: OrderService
+    hostname: order-service
+    ports:
+      - "5001:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ResilientMicroservices__RabbitMQ__HostName=rabbitmq
+      - ResilientMicroservices__Tracing__JaegerEndpoint=http://jaeger:14268/api/traces
+    depends_on:
+      - rabbitmq
+      - jaeger
+    networks:
+      - microservices-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/api/orders/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  payment-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: PaymentService
+    hostname: payment-service
+    ports:
+      - "5002:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ResilientMicroservices__RabbitMQ__HostName=rabbitmq
+      - ResilientMicroservices__Tracing__JaegerEndpoint=http://jaeger:14268/api/traces
+    depends_on:
+      - rabbitmq
+      - jaeger
+    networks:
+      - microservices-network
+    restart: unless-stopped
+
+  inventory-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: InventoryService
+    hostname: inventory-service
+    ports:
+      - "5003:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ResilientMicroservices__RabbitMQ__HostName=rabbitmq
+      - ResilientMicroservices__Tracing__JaegerEndpoint=http://jaeger:14268/api/traces
+    depends_on:
+      - rabbitmq
+      - jaeger
+    networks:
+      - microservices-network
+    restart: unless-stopped
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: ApiGateway
+    hostname: api-gateway
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ResilientMicroservices__RabbitMQ__HostName=rabbitmq
+      - ResilientMicroservices__Tracing__JaegerEndpoint=http://jaeger:14268/api/traces
+      - Services__OrderService=http://order-service:8080
+      - Services__PaymentService=http://payment-service:8080
+      - Services__InventoryService=http://inventory-service:8080
+    depends_on:
+      - rabbitmq
+      - jaeger
+      - order-service
+      - payment-service
+      - inventory-service
+    networks:
+      - microservices-network
+    restart: unless-stopped
+
+networks:
+  microservices-network:
+    driver: bridge
+
+volumes:
+  rabbitmq_data: 
