@@ -1,0 +1,70 @@
+title: Resilient Microservices Framework
+description: A comprehensive .NET framework for building resilient microservices with circuit breakers, distributed tracing, and saga orchestration.
+baseurl: "/dotnet-resilient-microservices-framework"
+url: "https://sourabh-virdi.github.io"
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+repository: sourabh-virdi/dotnet-resilient-microservices-framework
+
+author:
+  name: Resilient Microservices Framework Contributors
+  email: contributors@example.com
+
+social:
+  github: sourabh-virdi/dotnet-resilient-microservices-framework
+
+header_pages:
+  - index.md
+  - getting-started.md
+  - architecture.md
+  - api-reference.md
+  - examples.md
+  - contributing.md
+
+collections:
+  guides:
+    output: true
+    permalink: /:collection/:name/
+  api:
+    output: true
+    permalink: /:collection/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "guides"
+    values:
+      layout: "guide"
+  - scope:
+      path: ""
+      type: "api"
+    values:
+      layout: "api"
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .sass-cache
+  - _site 
